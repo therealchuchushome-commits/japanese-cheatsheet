@@ -1,0 +1,9 @@
+{
+  "name": "Japan Travel Cheatsheet",
+  "short_name": "Japan Cheatsheet",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#c3cfe2",
+  "orientation": "portrait-primary"
+}
