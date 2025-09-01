@@ -2,7 +2,10 @@ const CACHE_NAME = 'japan-cheatsheet-v1';
 const urlsToCache = [
   '/',
   'index.html',
-  'manifest.json'
+  'manifest.json',
+  'css/styles.css',
+  'data/phrases.js',
+  'js/app.js'
 ];
 
 self.addEventListener('install', event => {
