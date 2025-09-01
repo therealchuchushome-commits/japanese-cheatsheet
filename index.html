@@ -226,6 +226,7 @@
         .category-accommodation { background: linear-gradient(135deg, #e17055, #d63031); }
         .category-cultural { background: linear-gradient(135deg, #fd79a8, #fdcb6e); }
         .category-amenities { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+        .category-optician { background: linear-gradient(135deg, #00d2d3, #341f97); }
 
         .tap-instruction {
             position: absolute;
@@ -616,7 +617,29 @@
             {category: "comfort", english: "Shall we rest a bit? I'll find a place to sit.", spanish: "¿Descansamos un poco? Voy a buscar un sitio para sentarse.", japanese: "少し休みましょうか？座るところを探します。", romaji: "Sukoshi yasumimashou ka? Suwaru tokoro o sagashimasu.", notes: "Taking a break for the group"},
             {category: "manners", english: "Is everyone here? Let's do a head count.", spanish: "¿Están todos? ¡Paso lista!", japanese: "皆さん、いますか？点呼します！", romaji: "Minasan, imasu ka? Tenko shimasu!", notes: "Regrouping"},
             {category: "manners", english: "Excuse me, could you take our picture?", spanish: "Disculpe, ¿nos podría hacer una foto?", japanese: "すみません、写真を撮っていただけますか？", romaji: "Sumimasen, shashin o totte itadakemasu ka?", notes: "Asking for a group photo"},
-            {category: "manners", english: "Please make sure everyone is in the photo", spanish: "Que salgamos todos, por favor", japanese: "全員が入るようにお願いします。", romaji: "Zen-in ga hairu you ni onegai shimasu", notes: "For a group photo"}
+            {category: "manners", english: "Please make sure everyone is in the photo", spanish: "Que salgamos todos, por favor", japanese: "全員が入るようにお願いします。", romaji: "Zen-in ga hairu you ni onegai shimasu", notes: "For a group photo"},
+
+            // Category: Optician & Glasses
+            {category: "optician", english: "I'd like to have my eyes checked.", spanish: "Quisiera que me revisaran la vista.", japanese: "視力検査をお願いします。", romaji: "Shiryoku kensa o onegai shimasu.", notes: "Requesting an eye exam."},
+            {category: "optician", english: "I need new glasses.", spanish: "Necesito gafas nuevas.", japanese: "新しいメガネが必要です。", romaji: "Atarashii megane ga hitsuyō desu.", notes: ""},
+            {category: "optician", english: "I have astigmatism.", spanish: "Tengo astigmatismo.", japanese: "乱視があります。", romaji: "Ranshi ga arimasu.", notes: ""},
+            {category: "optician", english: "This is my current prescription.", spanish: "Esta es mi graduación actual.", japanese: "これが私の現在の処方箋です。", romaji: "Kore ga watashi no genzai no shohōsen desu.", notes: "If you have a prescription with you."},
+            {category: "optician", english: "Which is better, 1 or 2?", spanish: "Cuál es mejor, ¿el 1 o el 2?", japanese: "1と2、どちらが見やすいですか？", romaji: "Ichi to ni, dochira ga miyasui desu ka?", notes: "Common question from the optician."},
+            {category: "optician", english: "Number 1 is clearer.", spanish: "El número 1 se ve más nítido.", japanese: "1番の方がはっきり見えます。", romaji: "Ichi-ban no hō ga hakkiri miemasu.", notes: "Response to the optician."},
+            {category: "optician", english: "Number 2 is clearer.", spanish: "El número 2 se ve más nítido.", japanese: "2番の方がはっきり見えます。", romaji: "Ni-ban no hō ga hakkiri miemasu.", notes: "Response to the optician."},
+            {category: "optician", english: "They look about the same.", spanish: "Se ven más o menos igual.", japanese: "だいたい同じに見えます。", romaji: "Daitai onaji ni miemasu.", notes: "Response to the optician."},
+            {category: "optician", english: "It's blurry.", spanish: "Se ve borroso.", japanese: "ぼやけて見えます。", romaji: "Boyakete miemasu.", notes: "Describing your vision."},
+            {category: "optician", english: "I can't see it.", spanish: "No lo veo.", japanese: "見えません。", romaji: "Miemasen.", notes: "When a character is too small."},
+            {category: "optician", english: "The gap is on the right.", spanish: "La apertura está a la derecha.", japanese: "右が開いています。", romaji: "Migi ga aite imasu.", notes: "For Landolt C chart."},
+            {category: "optician", english: "The gap is on the top-left.", spanish: "La apertura está arriba a la izquierda.", japanese: "左上が開いています。", romaji: "Hidari-ue ga aite imasu.", notes: "For Landolt C chart."},
+            {category: "optician", english: "Some lines are darker.", spanish: "Algunas líneas se ven más oscuras.", japanese: "いくつかの線が濃く見えます。", romaji: "Ikutsuka no sen ga koku miemasu.", notes: "For astigmatism test."},
+            {category: "optician", english: "The vertical lines are darker.", spanish: "Las líneas verticales se ven más oscuras.", japanese: "縦線が濃く見えます。", romaji: "Tate-sen ga koku miemasu.", notes: "For astigmatism test."},
+            {category: "optician", english: "I'm looking for eyeglass frames.", spanish: "Estoy buscando monturas para gafas.", japanese: "メガネのフレームを探しています。", romaji: "Megane no furēmu o sagashite imasu.", notes: ""},
+            {category: "optician", english: "Can I try these on?", spanish: "Me los puedo probar?", japanese: "これを試着してもいいですか？", romaji: "Kore o shichaku shite mo ii desu ka?", notes: "For frames."},
+            {category: "optician", english: "Do you have this in another color?", spanish: "Tiene esto en otro color?", japanese: "これの他の色はありますか？", romaji: "Kore no hoka no iro wa arimasu ka?", notes: ""},
+            {category: "optician", english: "I'm looking for lighter frames.", spanish: "Busco unas monturas más ligeras.", japanese: "もっと軽いフレームを探しています。", romaji: "Motto karui furēmu o sagashite imasu.", notes: ""},
+            {category: "optician", english: "Do you have plastic frames?", spanish: "Tiene monturas de plástico?", japanese: "プラスチックのフレームはありますか？", romaji: "Purasuchikku no furēmu wa arimasu ka?", notes: ""},
+            {category: "optician", english: "Do you have metal frames?", spanish: "Tiene monturas de metal?", japanese: "金属のフレームはありますか？", romaji: "Kinzoku no furēmu wa arimasu ka?", notes: ""}
         ];
 
         let currentPhrase = null;
@@ -641,7 +664,8 @@
             publictransport: 'category-publictransport',
             accommodation: 'category-accommodation',
             cultural: 'category-cultural',
-            amenities: 'category-amenities'
+            amenities: 'category-amenities',
+            optician: 'category-optician'
         };
 
         function displayPhrase(phrase) {
