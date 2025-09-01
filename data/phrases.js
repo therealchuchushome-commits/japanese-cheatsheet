@@ -62,8 +62,6 @@ const phrases = [
             {category: "food", english: "Please give me...", spanish: "Por favor, dame...", japanese: "...ください", romaji: "... kudasai", notes: "'Mizu kudasai' (Water, please)"},
             {category: "food", english: "Can I have...?", spanish: "¿Puedo tener...?", japanese: "...をもらえますか？", romaji: "... o moraemasu ka?", notes: ""},
             {category: "food", english: "Check / Bill", spanish: "La cuenta", japanese: "お会計", romaji: "Okaikei", notes: "When you're ready to pay"},
-            {category: "food", english: "Cheers!", spanish: "¡Salud!", japanese: "乾杯！", romaji: "Kanpai!", notes: ""},
-            {category: "food", english: "Itadakimasu! (Before eating)", spanish: "¡Buen provecho!", japanese: "いただきます", romaji: "Itadakimasu", notes: "Polite phrase before eating, expresses gratitude"},
             {category: "food", english: "Gochisōsama! (After eating)", spanish: "¡Gracias por la comida!", japanese: "ごちそうさまでした", romaji: "Gochisōsama Deshita", notes: "Polite phrase after eating"},
 
             // Category 4: Shopping & Money
@@ -92,9 +90,8 @@ const phrases = [
             {category: "children", english: "Diaper", spanish: "Pañal", japanese: "おむつ", romaji: "Omitsu", notes: ""},
             {category: "children", english: "Wet wipes", spanish: "Toallitas húmedas", japanese: "お尻拭き", romaji: "O-shiri fuki", notes: "For diaper changes"},
             {category: "children", english: "Bottle (Baby)", spanish: "Biberón", japanese: "哺乳瓶", romaji: "Honnyūbin", notes: ""},
-            {category: "children", english: "Pacifier / Dummy", spanish: "Chupete", japanese: "おっぱい", romaji: "Oppai", notes: "Oppai also means 'breast'"},
+            {category: "children", english: "Pacifier / Dummy", spanish: "Chupete", japanese: "おしゃぶり", romaji: "Oshaburi", notes: ""},
             {category: "children", english: "Toy", spanish: "Juguete", japanese: "おもちゃ", romaji: "Omocha", notes: ""},
-            {category: "children", english: "Play", spanish: "Jugar", japanese: "遊ぶ", romaji: "Asobu", notes: "'Asobi ni iku!' (Let's go play!)"},
             {category: "children", english: "Tired (I'm tired)", spanish: "Estoy cansado/a", japanese: "疲れました", romaji: "Tsukaremashita", notes: "Child might say this often"},
             {category: "children", english: "Sleep", spanish: "Dormir", japanese: "寝る", romaji: "Neru", notes: ""},
             {category: "children", english: "Nap", spanish: "Siesta", japanese: "お昼寝", romaji: "O-hirune", notes: ""},
@@ -109,11 +106,6 @@ const phrases = [
             {category: "children", english: "Danger!", spanish: "¡Peligro!", japanese: "危ない！", romaji: "Abunai!", notes: "Crucial safety word"},
             {category: "children", english: "Carefully!", spanish: "¡Con cuidado!", japanese: "気をつけて！", romaji: "Ki o tsukete!", notes: "Also for safety"},
             {category: "children", english: "Please wait", spanish: "Espere, por favor", japanese: "待ってください", romaji: "Matte kudasai", notes: ""},
-            {category: "children", english: "Fun!", spanish: "¡Divertido!", japanese: "楽しい！", romaji: "Tanoshii!", notes: "Great for kids to express themselves"},
-            {category: "children", english: "Beautiful!", spanish: "¡Hermoso/a!", japanese: "きれい！", romaji: "Kirei!", notes: "Good for describing sights"},
-            {category: "children", english: "Big!", spanish: "¡Grande!", japanese: "大きい！", romaji: "Ōkii!", notes: "Kids love to point out big things"},
-            {category: "children", english: "Small!", spanish: "¡Pequeño/a!", japanese: "小さい！", romaji: "Chiisai!", notes: ""},
-            {category: "children", english: "Cute!", spanish: "¡Lindo/a!", japanese: "かわいい！", romaji: "Kawaii!", notes: "A very common and well-received compliment in Japan!"},
 
             // Category 6: Numbers (0-10)
             {category: "numbers", english: "Zero", spanish: "Cero", japanese: "ゼロ", romaji: "Zero", notes: ""},
@@ -144,25 +136,16 @@ const phrases = [
             {category: "play", english: "Aquarium", spanish: "Acuario", japanese: "水族館", romaji: "Suizokukan", notes: "Popular family spot"},
             {category: "play", english: "Zoo", spanish: "Zoológico", japanese: "動物園", romaji: "Dōbutsuen", notes: "Popular family spot"},
             {category: "play", english: "Look!", spanish: "¡Mira!", japanese: "見て！", romaji: "Mite!", notes: ""},
-            {category: "play", english: "Wow! / Amazing!", spanish: "¡Guau! / ¡Increíble!", japanese: "すごい！", romaji: "Sugoi!", notes: "General exclamation of awe"},
-            {category: "play", english: "Fun! (It was fun.)", spanish: "¡Divertido! (Fue divertido.)", japanese: "楽しかった！", romaji: "Tanoshikatta!", notes: "Past tense of 'Tanoshii!'"},
             {category: "play", english: "Again!", spanish: "¡Otra vez!", japanese: "もう一回！", romaji: "Mō ikkai!", notes: "For rides, games, etc."},
-            {category: "play", english: "My turn!", spanish: "¡Mi turno!", japanese: "私の番！", romaji: "Watashi no ban!", notes: "Or 'Kōtai!' (交代！) for 'change places'"},
 
             // Category 8: Comfort & Feelings
             {category: "comfort", english: "I'm sleepy", spanish: "Tengo sueño", japanese: "眠いです", romaji: "Nemui desu", notes: ""},
             {category: "comfort", english: "I'm scared", spanish: "Tengo miedo", japanese: "怖いです", romaji: "Kowai desu", notes: ""},
-            {category: "comfort", english: "I'm happy", spanish: "Estoy feliz", japanese: "嬉しいです", romaji: "Ureshii desu", notes: ""},
             {category: "comfort", english: "I'm sad", spanish: "Estoy triste", japanese: "悲しいです", romaji: "Kanashii desu", notes: ""},
-            {category: "comfort", english: "I'm bored", spanish: "Estoy aburrido/a", japanese: "暇すぎる", romaji: "Himasugiru", notes: "Or 'Tsumannai' (つまんない) for informal"},
             {category: "comfort", english: "It hurts (here)", spanish: "Me duele (aquí)", japanese: "(ここが)痛いです", romaji: "(Koko ga) Itai desu", notes: "Point to where it hurts"},
             {category: "comfort", english: "Are you okay?", spanish: "¿Estás bien?", japanese: "大丈夫ですか？", romaji: "Daijōbu desu ka?", notes: "Very useful for checking on someone"},
             {category: "comfort", english: "I'm okay / It's okay", spanish: "Estoy bien / Está bien", japanese: "大丈夫です", romaji: "Daijōbu desu", notes: "Response to 'Daijōbu desu ka?'"},
             {category: "comfort", english: "Just a little", spanish: "Solo un poquito", japanese: "ちょっとだけ", romaji: "Chotto dake", notes: "For food, pain, etc."},
-            {category: "comfort", english: "Don't cry", spanish: "No llores", japanese: "泣かないで", romaji: "Nakanai de", notes: "Consoling a child"},
-            {category: "comfort", english: "Hug", spanish: "Abrazo", japanese: "ハッグ", romaji: "Haggu", notes: "Loanword for 'hug' action"},
-            {category: "comfort", english: "Hug (verb)", spanish: "Abrazar", japanese: "抱きしめる", romaji: "Dakishimeru", notes: ""},
-            {category: "comfort", english: "Kiss", spanish: "Beso", japanese: "キス", romaji: "Kisu", notes: "Loanword"},
             {category: "comfort", english: "Warm (feeling)", spanish: "Cálido/a", japanese: "暖かい", romaji: "Atatakai", notes: "For comforting, or warm objects"},
 
             // Category 9: Manners & Rules (Japanese Specific)
@@ -171,7 +154,6 @@ const phrases = [
             {category: "manners", english: "Please sit down", spanish: "Por favor, siéntate", japanese: "座ってください", romaji: "Suwatte kudasai", notes: "On trains, buses"},
             {category: "manners", english: "Please line up", spanish: "Por favor, haz fila", japanese: "並んでください", romaji: "Narande kudasai", notes: "Essential in Japan!"},
             {category: "manners", english: "No running", spanish: "No correr", japanese: "走らないでください", romaji: "Hashiranaide kudasai", notes: "In temples, shops, quiet areas"},
-            {category: "manners", english: "Bow (action)", spanish: "Reverencia", japanese: "お辞儀", romaji: "Ojigi", notes: "A fundamental Japanese gesture"},
             {category: "manners", english: "Take off shoes", spanish: "Quítate los zapatos", japanese: "靴を脱いでください", romaji: "Kutsu o nuide kudasai", notes: "For homes, temples, some restaurants/ryokan"},
             {category: "manners", english: "Thank you for the meal (restaurant)", spanish: "Gracias por la comida (restaurante)", japanese: "ごちそうさまでした", romaji: "Gochisōsama Deshita", notes: "After eating"},
             {category: "manners", english: "Please accept this (gift)", spanish: "Por favor, acepta esto", japanese: "どうぞ", romaji: "Dōzo", notes: "When offering something"},
@@ -182,7 +164,6 @@ const phrases = [
             {category: "transport", english: "Bus", spanish: "Autobús", japanese: "バス", romaji: "Basu", notes: "Loanword"},
             {category: "transport", english: "Taxi", spanish: "Taxi", japanese: "タクシー", romaji: "Takushī", notes: "Loanword"},
             {category: "transport", english: "A little bit more", spanish: "Un poquito más", japanese: "もうちょっと", romaji: "Mō chotto", notes: "For walking, waiting, etc."},
-            {category: "transport", english: "Are we there yet?", spanish: "¿Ya llegamos?", japanese: "まだですか？", romaji: "Mada desu ka?", notes: "Classic kid question!"},
             {category: "transport", english: "Close (near)", spanish: "Cerca", japanese: "近い", romaji: "Chikai", notes: ""},
             {category: "transport", english: "Far (distance)", spanish: "Lejos", japanese: "遠い", romaji: "Tōi", notes: ""},
             {category: "transport", english: "Hold my hand", spanish: "Coge mi mano", japanese: "手をつないで", romaji: "Te o tsunaide", notes: "For safety"},
@@ -270,7 +251,6 @@ const phrases = [
             {category: "publictransport", english: "Is there ramp access?", spanish: "¿Hay acceso con rampa?", japanese: "ランプアクセスはありますか？", romaji: "Ranpu akusesu wa arimasu ka?", notes: "For stations or buildings without elevators."},
             {category: "publictransport", english: "Is this seat taken?", spanish: "¿Está ocupado este asiento?", japanese: "この席は空いていますか？", romaji: "Kono seki wa aite imasu ka?", notes: "Asking for a seat, especially if with a toddler."},
             {category: "publictransport", english: "Can we sit here?", spanish: "¿Podemos sentarnos aquí?", japanese: "ここに座ってもいいですか？", romaji: "Koko ni suwatte mo ii desu ka?", notes: "Polite request."},
-            {category: "publictransport", english: "Please mind the gap", spanish: "Por favor, cuidado con el hueco", japanese: "足元にご注意ください。", romaji: "Ashimoto ni gochūi kudasai.", notes: "Heard often, good to recognize."},
             {category: "publictransport", english: "Excuse me, we need to get off.", spanish: "Disculpe, necesitamos bajarnos.", japanese: "すみません、降ります。", romaji: "Sumimasen, orimasu.", notes: "To help get through a crowded train car."},
             {category: "publictransport", english: "This child is feeling travel-sick.", spanish: "Este/a niño/a se está mareando.", japanese: "この子は乗り物酔いです。", romaji: "Kono ko wa norimono-yoi desu.", notes: "To inform staff or other passengers."},
             {category: "publictransport", english: "We have a stroller.", spanish: "Tenemos un cochecito de bebé.", japanese: "ベビーカーがあります。", romaji: "Bēbī kā ga arimasu.", notes: "To explain bulky item, perhaps when entering shops or trains."},
@@ -287,12 +267,10 @@ const phrases = [
             // Category 19: Cultural Experiences & Specific Activities
             {category: "cultural", english: "Can my child participate?", spanish: "¿Puede participar mi hijo/a?", japanese: "子どもも参加できますか？", romaji: "Kodomo mo sanka dekimasu ka?", notes: "For workshops, tea ceremonies, etc."},
             {category: "cultural", english: "Is it okay for children?", spanish: "¿Está bien para los niños?", japanese: "子どもに大丈夫ですか？", romaji: "Kodomo ni daijōbu desu ka?", notes: "Asking if an activity is suitable."},
-            {category: "cultural", english: "My child is drawing/coloring.", spanish: "Mi hijo/a está dibujando/coloreando.", japanese: "子どもが絵を描いています。", romaji: "Kodomo ga e o kaite imasu.", notes: "Explaining what they're doing if drawing on provided paper."},
             {category: "cultural", english: "Can my child feed the fish / deer?", spanish: "¿Puede mi hijo/a alimentar a los peces/ciervos?", japanese: "子どもに魚/鹿に餌をやっていいですか？", romaji: "Kodomo ni sakana/shika ni esa o yatte mo ii desu ka?", notes: "At specific parks/temples (e.g., Nara - deer crackers only)."},
             {category: "cultural", english: "Where can we buy (tickets/souvenirs)?", spanish: "¿Dónde podemos comprar (entradas/recuerdos)?", japanese: "(切符/お土産)はどこで買えますか？", romaji: "(Kippu/Omiyage) wa doko de kaemasu ka?", notes: ""},
             {category: "cultural", english: "What does this mean? (pointing to a sign)", spanish: "¿Qué significa esto?", japanese: "これはどういう意味ですか？", romaji: "Kore wa dōiu imi desu ka?", notes: "If a sign is unclear, especially about rules."},
             {category: "cultural", english: "Can we take a picture here?", spanish: "¿Podemos hacer una foto aquí?", japanese: "ここで写真を撮ってもいいですか？", romaji: "Koko de shashin o totte mo ii desu ka?", notes: "Always good to ask at sensitive sites."},
-            {category: "cultural", english: "Please be quiet in the temple/shrine.", spanish: "Por favor, silencio en el templo/santuario.", japanese: "お寺/神社では静かにしてください。", romaji: "O-tera/Jinja de wa shizuka ni shite kudasai.", notes: "A polite reminder to your children."},
 
             // Category 20: General Amenities & Conveniences
             {category: "amenities", english: "Is there a vending machine (for drinks)?", spanish: "¿Hay una máquina expendedora (de bebidas)?", japanese: "自動販売機はありますか？", romaji: "Jidōhanbaiki wa arimasu ka?", notes: "Ubiquitous in Japan, but sometimes you need to find one quickly."},
@@ -319,8 +297,6 @@ const phrases = [
             {category: "play", english: "Where is the area for small children?", spanish: "¿Dónde está la zona para niños pequeños?", japanese: "小さい子供向けのエリアはどこですか？", romaji: "Chiisai kodomo-muke no eria wa doko desu ka?", notes: "e.g. Anpanman Museum, ASOBono!"},
             {category: "cultural", english: "Can children participate in this workshop?", spanish: "¿Los niños también pueden participar en este taller?", japanese: "このワークショップは子供でも参加できますか？", romaji: "Kono waakushoppu wa kodomo demo sanka dekimasu ka?", notes: "e.g. Morioka Handi-Works Square"},
             {category: "play", english: "What time is the next planetarium show?", spanish: "¿A qué hora es la próxima función del planetario?", japanese: "プラネタリウムの次の上映は何時ですか？", romaji: "Puranetariumu no tsugi no jouei wa nan-ji desu ka?", notes: "e.g. Fureai Science Museum"},
-            {category: "comfort", english: "Shall we rest a bit? I'll find a place to sit.", spanish: "¿Descansamos un poco? Voy a buscar un sitio para sentarse.", japanese: "少し休みましょうか？座るところを探します。", romaji: "Sukoshi yasumimashou ka? Suwaru tokoro o sagashimasu.", notes: "Taking a break for the group"},
-            {category: "manners", english: "Is everyone here? Let's do a head count.", spanish: "¿Están todos? ¡Paso lista!", japanese: "皆さん、いますか？点呼します！", romaji: "Minasan, imasu ka? Tenko shimasu!", notes: "Regrouping"},
             {category: "manners", english: "Excuse me, could you take our picture?", spanish: "Disculpe, ¿nos podría hacer una foto?", japanese: "すみません、写真を撮っていただけますか？", romaji: "Sumimasen, shashin o totte itadakemasu ka?", notes: "Asking for a group photo"},
             {category: "manners", english: "Please make sure everyone is in the photo", spanish: "Que salgamos todos, por favor", japanese: "全員が入るようにお願いします。", romaji: "Zen-in ga hairu you ni onegai shimasu", notes: "For a group photo"},
 
