@@ -40,6 +40,15 @@
                 <span class="close-btn">&times;</span>
                 <h2>Search Phrases</h2>
                 <input type="text" class="search-input" id="searchInput" placeholder="Type to search..." autofocus>
+                <div class="category-filter-container">
+                    <div class="category-filter-header">
+                        <span id="selectedCategory">All Categories</span>
+                        <button id="clearFilterBtn" class="clear-filter-btn" style="display: none;">Clear</button>
+                    </div>
+                    <div class="category-filter-grid" id="categoryFilterGrid">
+                        <!-- Category buttons will be inserted here by JavaScript -->
+                    </div>
+                </div>
             </div>
             <div class="search-results" id="searchResults"></div>
         </div>
