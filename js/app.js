@@ -8,12 +8,13 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+import { saveState, loadState } from './state.js';
 import phrases from '../data/phrases.js';
 import categories from '../data/categories.js';
 
 let currentPhrase = null;
-let filteredPhrases = [...phrases];
 let selectedCategory = null;
+let searchInput = '';
 
 const categoryColors = {
     greetings: 'category-greetings',
@@ -38,6 +39,14 @@ const categoryColors = {
     optician: 'category-optician'
 };
 
+function getCurrentState() {
+    return {
+        currentPhrase,
+        selectedCategory,
+        searchInput
+    };
+}
+
 function displayPhrase(phrase) {
     currentPhrase = phrase;
     const card = document.getElementById('mainCard');
@@ -51,6 +60,8 @@ function displayPhrase(phrase) {
     document.getElementById('japaneseRomaji').textContent = phrase.romaji;
     document.getElementById('englishText').textContent = phrase.english;
     document.getElementById('spanishText').textContent = phrase.spanish;
+
+    saveState(getCurrentState());
 }
 
 function fuzzyMatch(query, text) {
@@ -74,18 +85,18 @@ function fuzzyMatch(query, text) {
     return queryIndex === query.length ? score : 0;
 }
 
-function searchPhrases(query) {
+function searchPhrases() {
     let results = selectedCategory
         ? phrases.filter(p => p.category === selectedCategory)
         : [...phrases];
 
-    if (query.trim()) {
+    if (searchInput.trim()) {
         results = results.map(phrase => {
-            const englishScore = fuzzyMatch(query, phrase.english);
-            const spanishScore = fuzzyMatch(query, phrase.spanish);
-            const japaneseScore = fuzzyMatch(query, phrase.japanese);
-            const romajiScore = fuzzyMatch(query, phrase.romaji);
-            const categoryScore = fuzzyMatch(query, phrase.category);
+            const englishScore = fuzzyMatch(searchInput, phrase.english);
+            const spanishScore = fuzzyMatch(searchInput, phrase.spanish);
+            const japaneseScore = fuzzyMatch(searchInput, phrase.japanese);
+            const romajiScore = fuzzyMatch(searchInput, phrase.romaji);
+            const categoryScore = fuzzyMatch(searchInput, phrase.category);
             const maxScore = Math.max(englishScore, spanishScore, japaneseScore, romajiScore, categoryScore);
             return { ...phrase, score: maxScore };
         }).filter(phrase => phrase.score > 0)
@@ -120,20 +131,19 @@ function displaySearchResults(results) {
 function selectPhrase(phrase) {
     displayPhrase(phrase);
     closeModal();
+    saveState(getCurrentState());
 }
 
 function openModal() {
-    selectedCategory = null; // Reset category filter
     document.getElementById('searchModal').style.display = 'block';
     document.getElementById('searchInput').focus();
-    displaySearchResults(searchPhrases(''));
+    document.getElementById('searchInput').value = searchInput;
+    displaySearchResults(searchPhrases());
     updateSelectedCategoryDisplay();
 }
 
 function closeModal() {
     document.getElementById('searchModal').style.display = 'none';
-    document.getElementById('searchInput').value = '';
-    clearFilter();
 }
 
 function generateCategoryButtons() {
@@ -146,10 +156,11 @@ function generateCategoryButtons() {
         button.title = category.name;
         button.addEventListener('click', () => {
             selectedCategory = category.id;
-            const results = searchPhrases(document.getElementById('searchInput').value);
+            const results = searchPhrases();
             displaySearchResults(results);
             updateSelectedCategoryDisplay();
             document.getElementById('categoryFilterGrid').classList.remove('show');
+            saveState(getCurrentState());
         });
         grid.appendChild(button);
     });
@@ -170,16 +181,19 @@ function updateSelectedCategoryDisplay() {
 
 function clearFilter() {
     selectedCategory = null;
-    const results = searchPhrases(document.getElementById('searchInput').value);
+    const results = searchPhrases();
     displaySearchResults(results);
     updateSelectedCategoryDisplay();
     document.getElementById('categoryFilterGrid').classList.remove('show');
+    saveState(getCurrentState());
 }
 
 // Event listeners
 document.getElementById('searchInput').addEventListener('input', (e) => {
-    const results = searchPhrases(e.target.value);
+    searchInput = e.target.value;
+    const results = searchPhrases();
     displaySearchResults(results);
+    saveState(getCurrentState());
 });
 
 document.getElementById('clearFilterBtn').addEventListener('click', clearFilter);
@@ -200,14 +214,30 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Initialize with a default phrase
-displayPhrase(phrases[0]);
+function initializeApp() {
+    const savedState = loadState();
+    if (savedState) {
+        currentPhrase = savedState.currentPhrase;
+        selectedCategory = savedState.selectedCategory;
+        searchInput = savedState.searchInput;
+    } else {
+        currentPhrase = phrases[0];
+    }
+
+    if (currentPhrase) {
+        displayPhrase(currentPhrase);
+    } else {
+        displayPhrase(phrases[0]);
+    }
+
+    generateCategoryButtons();
+}
+
+// Initialize app on load
+initializeApp();
 
 // Add event listener to the main card
 document.getElementById('mainCard').addEventListener('click', openModal);
 
 // Add event listener to the close button
 document.querySelector('.close-btn').addEventListener('click', closeModal);
-
-// Generate category buttons on load
-generateCategoryButtons();
