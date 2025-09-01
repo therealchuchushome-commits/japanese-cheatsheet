@@ -1,7 +1,9 @@
 import phrases from '../data/phrases.js';
+import categories from '../data/categories.js';
 
 let currentPhrase = null;
 let filteredPhrases = [...phrases];
+let selectedCategory = null;
 
 const categoryColors = {
     greetings: 'category-greetings',
@@ -63,22 +65,22 @@ function fuzzyMatch(query, text) {
 }
 
 function searchPhrases(query) {
-    if (!query.trim()) {
-        return phrases;
+    let results = selectedCategory
+        ? phrases.filter(p => p.category === selectedCategory)
+        : [...phrases];
+
+    if (query.trim()) {
+        results = results.map(phrase => {
+            const englishScore = fuzzyMatch(query, phrase.english);
+            const spanishScore = fuzzyMatch(query, phrase.spanish);
+            const japaneseScore = fuzzyMatch(query, phrase.japanese);
+            const romajiScore = fuzzyMatch(query, phrase.romaji);
+            const categoryScore = fuzzyMatch(query, phrase.category);
+            const maxScore = Math.max(englishScore, spanishScore, japaneseScore, romajiScore, categoryScore);
+            return { ...phrase, score: maxScore };
+        }).filter(phrase => phrase.score > 0)
+          .sort((a, b) => b.score - a.score);
     }
-
-    const results = phrases.map(phrase => {
-        const englishScore = fuzzyMatch(query, phrase.english);
-        const spanishScore = fuzzyMatch(query, phrase.spanish);
-        const japaneseScore = fuzzyMatch(query, phrase.japanese);
-        const romajiScore = fuzzyMatch(query, phrase.romaji);
-        const categoryScore = fuzzyMatch(query, phrase.category);
-
-        const maxScore = Math.max(englishScore, spanishScore, japaneseScore, romajiScore, categoryScore);
-
-        return { ...phrase, score: maxScore };
-    }).filter(phrase => phrase.score > 0)
-      .sort((a, b) => b.score - a.score);
 
     return results;
 }
@@ -92,8 +94,11 @@ function displaySearchResults(results) {
         item.className = 'search-item';
         item.addEventListener('click', () => selectPhrase(phrase));
 
+        const category = categories.find(c => c.id === phrase.category);
+        const categoryName = category ? category.name : phrase.category;
+
         item.innerHTML = `
-            <div class="search-item-category">${phrase.category}</div>
+            <div class="search-item-category">${categoryName}</div>
             <div class="search-item-english">${phrase.english}</div>
             <div class="search-item-japanese">${phrase.japanese} (${phrase.romaji})</div>
         `;
@@ -108,14 +113,55 @@ function selectPhrase(phrase) {
 }
 
 function openModal() {
+    selectedCategory = null; // Reset category filter
     document.getElementById('searchModal').style.display = 'block';
     document.getElementById('searchInput').focus();
-    displaySearchResults(phrases);
+    displaySearchResults(searchPhrases(''));
+    updateSelectedCategoryDisplay();
 }
 
 function closeModal() {
     document.getElementById('searchModal').style.display = 'none';
     document.getElementById('searchInput').value = '';
+    clearFilter();
+}
+
+function generateCategoryButtons() {
+    const grid = document.getElementById('categoryFilterGrid');
+    grid.innerHTML = '';
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.className = 'category-btn';
+        button.textContent = category.emoji;
+        button.title = category.name;
+        button.addEventListener('click', () => {
+            selectedCategory = category.id;
+            const results = searchPhrases(document.getElementById('searchInput').value);
+            displaySearchResults(results);
+            updateSelectedCategoryDisplay();
+        });
+        grid.appendChild(button);
+    });
+}
+
+function updateSelectedCategoryDisplay() {
+    const selectedCategoryEl = document.getElementById('selectedCategory');
+    const clearFilterBtn = document.getElementById('clearFilterBtn');
+    if (selectedCategory) {
+        const category = categories.find(c => c.id === selectedCategory);
+        selectedCategoryEl.textContent = `Category: ${category.name}`;
+        clearFilterBtn.style.display = 'inline';
+    } else {
+        selectedCategoryEl.textContent = 'All Categories';
+        clearFilterBtn.style.display = 'none';
+    }
+}
+
+function clearFilter() {
+    selectedCategory = null;
+    const results = searchPhrases(document.getElementById('searchInput').value);
+    displaySearchResults(results);
+    updateSelectedCategoryDisplay();
 }
 
 // Event listeners
@@ -123,6 +169,8 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
     const results = searchPhrases(e.target.value);
     displaySearchResults(results);
 });
+
+document.getElementById('clearFilterBtn').addEventListener('click', clearFilter);
 
 document.getElementById('searchModal').addEventListener('click', (e) => {
     if (e.target === document.getElementById('searchModal')) {
@@ -144,3 +192,6 @@ document.getElementById('mainCard').addEventListener('click', openModal);
 
 // Add event listener to the close button
 document.querySelector('.close-btn').addEventListener('click', closeModal);
+
+// Generate category buttons on load
+generateCategoryButtons();

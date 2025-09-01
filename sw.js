@@ -5,6 +5,7 @@ const urlsToCache = [
   'manifest.json',
   'css/styles.css',
   'data/phrases.js',
+  'data/categories.js',
   'js/app.js'
 ];
 
