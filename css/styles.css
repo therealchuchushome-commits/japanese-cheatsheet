@@ -260,9 +260,22 @@
     margin-bottom: 10px;
 }
 
-#selectedCategory {
+.category-filter-toggle-btn {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1em;
     font-weight: bold;
     color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: left;
+    width: 100%;
+}
+
+.category-filter-toggle-btn:hover {
+    background-color: #f9f9f9;
 }
 
 .clear-filter-btn {
@@ -280,9 +293,14 @@
 }
 
 .category-filter-grid {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     gap: 10px;
+    margin-top: 10px;
+}
+
+.category-filter-grid.show {
+    display: grid;
 }
 
 .category-btn {
